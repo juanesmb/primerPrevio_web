@@ -49,15 +49,23 @@ function cargarlistadoNoticias() {
         ]
 
     window.localStorage.setItem('listadoNoticias', JSON.stringify(listadoNoticias));
+
+
+    document.getElementById('foto').setAttribute("src", listadoNoticias[0].img);
     for(var i = 0; i<=2; i++)
     {
         document.getElementsByClassName('titulo').item(i).textContent = listadoNoticias[i].titulo;
+        document.getElementsByClassName('categoria').item(i).innerHTML = listadoNoticias[i].categoria;
+        document.getElementsByClassName('fecha').item(i).innerHTML = listadoNoticias[i].fecha;
+        document.getElementsByClassName('sub-descripcion').item(i).innerHTML = listadoNoticias[i].descripcion;
     }
+    
+
 
     
     
-    /*document.getElementsByClassName('categoria').item(0).appendChild(t);
-    console.log(listadoNoticias[0].categoria);*/
+    /*document.getElementsByClassName('categoria').item(0).appendChild(t);*/
+    //console.log(listadoNoticias[0].descripcion);
 }
 
 
