@@ -1,8 +1,10 @@
 
 /////////////////////////////MAIN//////////////////////////////////
 
-cargarlistadoNoticias();
-cargarSecciones();
+cargarDatos();
+
+
+
 
 
 
@@ -10,8 +12,34 @@ cargarSecciones();
 
 //////////////////////////FUNCTIONS////////////////////////////////
 
-function cargarlistadoNoticias() {
-    var listadoNoticias =
+function cargarDatos() {
+    var url = "http://demo6497253.mockable.io/noticias";
+    var listadoCartas = fetch(url)
+        .then(response => response.json())
+        .then(data => cargarlistadoNoticias(data))
+        .catch(function (error) {
+        });
+
+    var url = "http://demo6497253.mockable.io/categoria/deporte";
+    var listadoCartas = fetch(url)
+        .then(response => response.json())
+        .then(data => cargarSecciones(data))
+        .catch(function (error) {
+        });
+
+    var url = "http://demo6497253.mockable.io/categoria/tecnologia";
+    var listadoCartas = fetch(url)
+        .then(response => response.json())
+        .then(data => cargarSecciones(data))
+        .catch(function (error) {
+        });
+}
+
+function cargarlistadoNoticias(listadoNoticias) {
+
+
+
+    /*var listadoNoticias =
         [{
             "id": "1",
             "titulo": "Democracia estudiantil",
@@ -48,7 +76,7 @@ function cargarlistadoNoticias() {
             "fecha": "20 de marzo de 2021",
             "img": "https://www.redeszone.net/app/uploads-redeszone.net/2016/05/Geometria-aleatoria.png"
         }
-        ]
+        ]*/
 
     window.localStorage.setItem('listadoNoticias', JSON.stringify(listadoNoticias));
 
@@ -62,8 +90,23 @@ function cargarlistadoNoticias() {
     }
 }
 
-function cargarSecciones() {
-    var deportes = [{
+function cargarSecciones(data) {
+    if (data[0].categoria == "deporte") {
+        window.localStorage.setItem('listadoDeporte', JSON.stringify(data));
+        document.getElementById('deportes-titulo').innerHTML = data[0].categoria;
+        for (var i = 0; i <= 2; i++) {
+            document.getElementsByClassName('deportes-titular').item(i).innerHTML = data[i].titulo;
+        }
+    }
+    if (data[0].categoria == "tecnologia") {
+        window.localStorage.setItem('listadoTecnologia', JSON.stringify(data));
+        document.getElementById('tecnologia-titulo').innerHTML = data[0].categoria;
+        for (var i = 0; i <= 2; i++) {
+            document.getElementsByClassName('tecnologia-titular').item(i).innerHTML = data[i].titulo;
+        }
+    }
+
+    /*var deportes = [{
         "id": 4,
         "titulo": "Aplazada eliminatoria a Qatar",
         "categoria": "deporte"
@@ -98,19 +141,18 @@ function cargarSecciones() {
         "titulo": "Educall, educación telefónica",
         "categoria": "tecnologia"
     }
-    ]
+    ]*/
 
-    window.localStorage.setItem('listadoDeporte', JSON.stringify(deportes));
+    /*window.localStorage.setItem('listadoDeporte', JSON.stringify(deportes));
     window.localStorage.setItem('listadoTecnologia', JSON.stringify(tecnologia));
 
-    
+
     document.getElementById('deportes-titulo').innerHTML = deportes[0].categoria;
     document.getElementById('tecnologia-titulo').innerHTML = tecnologia[0].categoria;
-    for (var i = 0; i <= 2; i++) 
-    {
+    for (var i = 0; i <= 2; i++) {
         document.getElementsByClassName('deportes-titular').item(i).innerHTML = deportes[i].titulo;
         document.getElementsByClassName('tecnologia-titular').item(i).innerHTML = tecnologia[i].titulo;
-    }
+    }*/
 
 
 }
