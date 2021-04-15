@@ -4,13 +4,16 @@
     width: 80px;
 }
 
-.subtitulo
-{
-    color: #0280DB;
-}
-
 .sub-descripcion
 {
     border-style: dotted;
 }
 
+.titulo{
+    display: inline-block;
+}
+
+.titulo,.categoria, .fecha, .subtitulo 
+{
+    color: #0280DB;
+}

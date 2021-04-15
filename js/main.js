@@ -2,6 +2,8 @@
 /////////////////////////////MAIN//////////////////////////////////
 
 cargarlistadoNoticias();
+cargarSecciones();
+
 
 
 
@@ -52,20 +54,65 @@ function cargarlistadoNoticias() {
 
 
     document.getElementById('foto').setAttribute("src", listadoNoticias[0].img);
-    for(var i = 0; i<=2; i++)
-    {
+    for (var i = 0; i <= 2; i++) {
         document.getElementsByClassName('titulo').item(i).textContent = listadoNoticias[i].titulo;
         document.getElementsByClassName('categoria').item(i).innerHTML = listadoNoticias[i].categoria;
         document.getElementsByClassName('fecha').item(i).innerHTML = listadoNoticias[i].fecha;
         document.getElementsByClassName('sub-descripcion').item(i).innerHTML = listadoNoticias[i].descripcion;
     }
+}
+
+function cargarSecciones() {
+    var deportes = [{
+        "id": 4,
+        "titulo": "Aplazada eliminatoria a Qatar",
+        "categoria": "deporte"
+    }, {
+        "id": 5,
+        "titulo": "Juegos intercolegiales 2021",
+        "categoria": "deporte"
+    }, {
+        "id": 6,
+        "titulo": "Camila Osorio orgullo cucuteño",
+        "categoria": "deporte"
+    }, {
+        "id": 10,
+        "titulo": "Reconocimiento deportivo del Cúcuta",
+        "categoria": "deporte"
+    }];
+
+    var tecnologia = [{
+        "id": 7,
+        "titulo": "Lanzado el nuevo mundo de Among Us",
+        "categoria": "tecnologia"
+    }, {
+        "id": 8,
+        "titulo": "Torneo nacional de robótica",
+        "categoria": "tecnologia"
+    }, {
+        "id": 9,
+        "titulo": "La importancia de la programación",
+        "categoria": "tecnologia"
+    }, {
+        "id": 11,
+        "titulo": "Educall, educación telefónica",
+        "categoria": "tecnologia"
+    }
+    ]
+
+    window.localStorage.setItem('listadoDeporte', JSON.stringify(deportes));
+    window.localStorage.setItem('listadoTecnologia', JSON.stringify(tecnologia));
+
     
+    document.getElementById('deportes-titulo').innerHTML = deportes[0].categoria;
+    document.getElementById('tecnologia-titulo').innerHTML = tecnologia[0].categoria;
+    for (var i = 0; i <= 2; i++) 
+    {
+        document.getElementsByClassName('deportes-titular').item(i).innerHTML = deportes[i].titulo;
+        document.getElementsByClassName('tecnologia-titular').item(i).innerHTML = tecnologia[i].titulo;
+    }
 
 
-    
-    
-    /*document.getElementsByClassName('categoria').item(0).appendChild(t);*/
-    //console.log(listadoNoticias[0].descripcion);
 }
 
 
