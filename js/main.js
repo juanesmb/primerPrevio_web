@@ -156,16 +156,3 @@ function cargarSecciones(data) {
 
 
 }
-
-
-
-
-
-/*
-var url = "datos.json";
-var listadoCartas = fetch(url)
-    .then(response => response.json())
-    .then(data => generar(data))
-    .catch(function (error) {
-    });
-*/
