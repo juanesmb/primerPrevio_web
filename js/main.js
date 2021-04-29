@@ -13,21 +13,21 @@ cargarDatos();
 //////////////////////////FUNCTIONS////////////////////////////////
 
 function cargarDatos() {
-    var url = "http://demo6497253.mockable.io/noticias";
+    var url = "https://demo6497253.mockable.io/noticias";
     var listadoCartas = fetch(url)
         .then(response => response.json())
         .then(data => cargarlistadoNoticias(data))
         .catch(function (error) {
         });
 
-    var url = "http://demo6497253.mockable.io/categoria/deporte";
+    var url = "https://demo6497253.mockable.io/categoria/deporte";
     var listadoCartas = fetch(url)
         .then(response => response.json())
         .then(data => cargarSecciones(data))
         .catch(function (error) {
         });
 
-    var url = "http://demo6497253.mockable.io/categoria/tecnologia";
+    var url = "https://demo6497253.mockable.io/categoria/tecnologia";
     var listadoCartas = fetch(url)
         .then(response => response.json())
         .then(data => cargarSecciones(data))
